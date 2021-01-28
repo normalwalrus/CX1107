@@ -1,0 +1,31 @@
+{ListNode *pre,*cur;
+    int j, count=0;
+    pre = (*ptrHead);
+    cur = (*ptrHead);
+    while (cur->next!=NULL)
+    {
+        cur = cur->next;
+        count++;
+    }
+    if (count < index)
+    {
+        return 0;
+    }
+    else
+    {
+        if (index == 0)
+        {
+            (*ptrHead) = (*ptrHead)->next;
+            return 1;
+        }
+        else
+        {
+            for (j=index-1; j--; j>0)
+            {
+                pre = pre->next;
+            }
+                pre->next = pre->next->next;
+                return 1;
+        }
+    }
+}
