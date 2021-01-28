@@ -1,0 +1,30 @@
+int duplicateReverse(ListNode *cur,ListNode **ptrNewHead)
+{
+    ListNode *tar,*pre,*curr;
+    tar = cur;
+    curr = *ptrNewHead;
+    pre=NULL;
+    int temp;
+    while (tar!=NULL)
+    {
+        if (*ptrNewHead==NULL)
+        {
+            temp = tar->item;
+            *ptrNewHead = malloc(sizeof(ListNode));
+            (*ptrNewHead)->item = temp;
+            (*ptrNewHead)->next = NULL;
+            curr = *ptrNewHead;
+            tar = tar->next;
+        }
+        else
+        {
+            temp = tar->item;
+            *ptrNewHead = malloc(sizeof(ListNode));
+            (*ptrNewHead) -> item = temp;
+            (*ptrNewHead)->next = curr;
+            curr = *ptrNewHead;
+            tar = tar->next;
+        }
+
+    }
+}
