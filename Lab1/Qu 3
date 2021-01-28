@@ -1,0 +1,58 @@
+int split(ListNode *cur, ListNode **ptrEvenList,ListNode **ptrOddList)
+{
+    int count=0, temp;
+    ListNode *even,*odd,*tar;
+    tar = cur;
+    even = NULL;
+    odd = NULL;
+    while (tar!=NULL)
+    {
+        if(count%2==0||count==0)
+        {
+            if (*ptrEvenList==NULL)
+            {
+                temp = tar->item;
+                (*ptrEvenList) = malloc(sizeof(ListNode));
+                (*ptrEvenList) ->item = temp;
+                (*ptrEvenList) ->next = NULL;
+                tar = tar->next;
+                even = (*ptrEvenList);
+                count++;
+            }
+            else
+            {
+                temp = tar ->item;
+                even->next = malloc(sizeof(ListNode));
+                even->next->item=temp;
+                even->next->next=NULL;
+                even = even->next;
+                tar = tar->next;
+                count++;
+            }
+        }
+        else
+        {
+            if (*ptrOddList==NULL)
+            {
+                temp = tar->item;
+                (*ptrOddList) = malloc(sizeof(ListNode));
+                (*ptrOddList) ->item = temp;
+                (*ptrOddList) ->next = NULL;
+                tar = tar->next;
+                odd = (*ptrOddList);
+                count++;
+            }
+            else
+            {
+                temp = tar ->item;
+                odd->next = malloc(sizeof(ListNode));
+                odd->next->item=temp;
+                odd->next->next=NULL;
+                odd = odd->next;
+                tar = tar->next;
+                count++;
+            }
+        }
+    }
+    return 0;
+}
